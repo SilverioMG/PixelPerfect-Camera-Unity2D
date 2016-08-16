@@ -48,3 +48,6 @@ Vector3 posicion = new Vector3(10,20,0);
 Vector3 posicionUnity = Position2DToWorld(posicion);
 
 Conseguimos convertir las posiciones y desarrollar nuestro juego con una metodología 'PixelPerfect'. 
+
+-La clase 'AspectUtility.cs' la saqué de un foro de Unity y la adapté para que utilice los campos que indican la resolución virtual en la clase 'PixelPerfectCamera.cs'. Lo que hace esta clase es evitar que la imagen de nuestro juego se deforme en pantalla manteniendo el aspect ratio de nuestra resolución virtual. Para ello modifica el 'viewPort' de nuestra cámara principal a un tamaño que conserve una relación de aspecto (aspectRatio) igual a nuestra resolución virtual, así nuestro juego no se verá en toda la pantalla, sino solo en un rectángulo cuyas proporciones ancho*alto sean iguales a nuestra resolución virtual. Cuando el motor de Unity muestre nuestro juego en pantalla, lo escalará a las dimensiones del 'viewPort' evitando que se deforme (más ancho o alta) la imagen.
+Por último esta clase crea otra cámara con un 'viewPort' que ocupa toda la pantalla y con color de relleno negro. La coloca detrás de la cámara principal en la escena unity y lo que consigue es el efecto de los 2 rectángulos negros en el borde de la pantalla que cubren la superficie sin imagen cuando vemos juegos o películas que no se visualizan en toda la superficie de la pantalla.
