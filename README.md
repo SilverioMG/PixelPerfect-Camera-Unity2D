@@ -14,7 +14,16 @@ es que el juego vaya a la misma velocidad en todos los equipos, lógicamente, si
 el juego se verá relentizado.
 Hoy en día se ha cambiado esta técnica por no utilizar la 'espera' al final de cada ciclo de juego. Lo que se hace es que el juego
 va a su máxima velocidad en todos los equipos y el movimiento de los 'Sprites' y demás cálculos se hacen en función del 'deltaTime' o tiempo transcurrido desde el último ciclo de juego hasta el actual. Si sabes que tu sprite se moverá 1 punto en pantalla cada 0.10
-segundos, solo tienes que multiplicar '0.10 * deltaTime' para saber desplazamiento tendrá en cada ciclo de juego.
+segundos, solo tienes que multiplicar '0.10 * deltaTime' para saber el desplazamiento que tendrá en cada ciclo de juego.
+
+Al utilizar el 'deltaTime' en vez de ajustar los Frames del juego provoca que el juego se vea igual de rápido en ordenadores potentes, pero en ordenadores que no dan la talla el movimiento se hace a saltos, como pasa más tiempo entre cada ciclo de juego, la distancia recorrida en cada ciclo es mayor y el sprite pasa de estar en una posición a otra bastante alejada sin que se vea el recorrido intermedio. Este problema casi no es apreciable en juegos 3D, pero en un juego 2D si que se nota.
+Por eso para mi gusto, perfiero seguir programando con unos FPS fijos. 
+Si el juego va lento pues va lento, como pasó toda la vida, o puede que vaya bien y que en determinado momento se relentice por que hay más sprites, pero se sabe que es por eso y que la máquina no dá para más. En el otro caso el juego parece que va bien pero notas algo raro y el jugador puede pensar que el juego es así siempre, en vez de darse cuenta que su equipo no es suficientemente potente.
+
+Con la clase 'PixelPerfectCamera' se pueden seleccionar los FPS (Frames por segundo) para nuestro juego.
+Si empezamos a ver que el juego va lento entonces hay dos opciones, o bajamos los FPS del juego (será más lento y menos suave en los movimientos) o nos toca revisar el código y optimizar nuestro código para ahorrar milisegundos en cada ciclo de juego.
+
+Es la principal diferencia entre programar juegos o aplicaciones, en los juegos hay que pensar que cada acción posiblemente vaya a repetirse en cada ciclo del juego y según como esté programada puede afectar al funcionamiento final del programa.
 
 PixelPerfectCamer.cs:
 ---------------------
